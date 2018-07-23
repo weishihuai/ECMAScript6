@@ -12,7 +12,7 @@ class App extends Component {
         }
     }
 
-    onClickListener = () => {
+    onClickListener01 = () => {
         console.log(...[1, 2, 3]);  //1 2 3
 
         console.log(1, ...[2, 3, 4], 5);  //1 2 3 4 5
@@ -37,18 +37,18 @@ class App extends Component {
         console.log(a2);   //[1, 2]
 
         //es6
-        const aa1 = [1,2];
+        const aa1 = [1, 2];
         console.log([...aa1]);  //[1, 2]
 
 
         //合并数组
-        const aaa1 = [1,2,3];
-        const aaa2 = [4,5,6];
+        const aaa1 = [1, 2, 3];
+        const aaa2 = [4, 5, 6];
 
         //es5
         console.log(aaa1.concat(aaa2));  //[1, 2, 3, 4, 5, 6]
         //es6
-        console.log([...aaa1,...aaa2]);  //[1, 2, 3, 4, 5, 6]
+        console.log([...aaa1, ...aaa2]);  //[1, 2, 3, 4, 5, 6]
 
 
         //与解构赋值结合
@@ -66,6 +66,34 @@ class App extends Component {
         console.log(rest);   // []
 
         console.log([...'hello world']); // ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
+
+    };
+
+    onClickListener02 = () => {
+        let {x, y, ...z} = {x: 1, y: 2, a: 3, b: 4};
+        console.log(x); //1
+        console.log(y); //2
+        console.log(z); //{a: 3, b: 4}
+
+        //解构赋值要求等号右边是一个对象
+        //let { x, y, ...z } = null; // 运行时错误
+        // let { x, y, ...z } = undefined; // 运行时错误
+
+
+        //解构赋值必须是最后一个参数，否则报错
+        // let { ...x, y, z } = obj; // 句法错误
+        // let { x, ...y, ...z } = obj; // 句法错误
+
+
+        let z1 = {a: 3, b: 4};
+        let n = {...z1};
+        console.log(n);   //{a: 3, b: 4}
+
+        //Object.assign(target, source1, source2);
+        let a = {a: 1, b: 2};
+        let b = {c: 3, d: 4};
+        console.log({...a, ...b});            //{a: 1, b: 2, c: 3, d: 4}
+        console.log(Object.assign({}, a, b));  //{a: 1, b: 2, c: 3, d: 4}
 
     };
 
@@ -87,7 +115,10 @@ class App extends Component {
                     To
                     get
                     started, edit < code> src / App.js </code> and save to reload.</p>
-                <Button onClick={this.onClickListener}>点击</Button>
+                <Button onClick={this.onClickListener01}>es6 数组的扩展-扩展运算符</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener02}>es6 对象的扩展-扩展运算符</Button>
             </div>
         );
     }
