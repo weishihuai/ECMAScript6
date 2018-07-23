@@ -97,6 +97,27 @@ class App extends Component {
 
     };
 
+    onClickListener03 = () => {
+        //字符串的遍历
+        let str = 'hello world';
+        for (let s of str) {
+            console.log(s);  //h e l l o  w o r l d
+        }
+
+        //includes(), startsWith(), endsWith()
+        let s = 'Hello world!';
+        console.log(s.includes('l'));   //true
+        console.log(s.startsWith('H')); //true
+        console.log(s.endsWith('!'));   //true
+
+        console.log(s.includes('l',2)); //true
+        console.log(s.includes('l',10)); //false
+
+        //模板字符串
+        let name = "Bob", time = "today";
+        console.log(`${name},how old are you , ${time}`); //Bob,how old are you , today
+    };
+
     render() {
         return (
             < div
@@ -119,6 +140,9 @@ class App extends Component {
                 <br/>
                 <br/>
                 <Button onClick={this.onClickListener02}>es6 对象的扩展-扩展运算符</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener03}>es6 字符串的扩展</Button>
             </div>
         );
     }
