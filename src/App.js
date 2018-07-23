@@ -65,6 +65,7 @@ class App extends Component {
         console.log(first);  // "foo"
         console.log(rest);   // []
 
+        console.log([...'hello world']); // ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
 
     };
 
