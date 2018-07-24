@@ -5,13 +5,6 @@ import {Button} from 'antd';
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            result: ""
-        }
-    }
-
     onClickListener01 = () => {
         console.log(...[1, 2, 3]);  //1 2 3
 
@@ -110,12 +103,107 @@ class App extends Component {
         console.log(s.startsWith('H')); //true
         console.log(s.endsWith('!'));   //true
 
-        console.log(s.includes('l',2)); //true
-        console.log(s.includes('l',10)); //false
+        console.log(s.includes('l', 2)); //true
+        console.log(s.includes('l', 10)); //false
 
         //模板字符串
         let name = "Bob", time = "today";
         console.log(`${name},how old are you , ${time}`); //Bob,how old are you , today
+    };
+
+    //函数可以指定参数的默认值
+    log = (x, y = 'World') => {
+        console.log(x + "------" + y);
+    };
+
+    //与解构赋值默认值结合使用
+    foo = ({x, y = 5}) => {
+        console.log(x, y);
+    };
+
+    foo2 = ({x, y = 5} = {}) => {
+        console.log(x + "---" + y);
+    };
+
+    foo3 = (x = 5, y = 6) => {
+        console.log(x, y);
+    };
+
+    add = (...values) => {
+        let sum = 0;
+        for (let val of values) {
+            sum += val;
+        }
+        return sum;
+    };
+
+    onClickListener04 = () => {
+        //指定函数参数的默认值
+        this.log('Hello');      // Hello------World
+        this.log('Hello', 'China');     // Hello------China
+        this.log('Hello', '');  // Hello------
+
+        //与解构赋值默认值结合使用
+        this.foo({}); // undefined 5
+        this.foo({x: 1}); // 1 5
+        this.foo({x: 1, y: 2}); // 1 2
+        // this.foo(); // TypeError: Uncaught TypeError: Cannot read property 'x' of undefined
+
+        this.foo2(); //undefined---5
+
+        //参数默认值的位置
+        //通常情况下，定义了默认值的参数，应该是函数的尾参数。因为这样比较容易看出来，到底省略了哪些参数。如果非尾部的参数设置默认值，实际上这个参数是没法省略的
+
+        //undefined会触发函数默认值，null不会触发函数默认值
+        this.foo3(undefined, null);   //5 null
+
+        //rest参数(注意，rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。)
+        console.log(this.add(1, 2, 3, 4));   //10
+
+        //箭头函数
+        const f = values => values;
+
+        function es5_f(values) {
+            return values;
+        }
+
+        const sum = (num1, num2) => num1 + num2;
+        const es5_sum = function (num1, num2) {
+            return num1 + num2;
+        };
+
+        // 正常函数写法
+        [1, 2, 3].map(function (x) {
+            return x * x;
+        });
+
+        // 箭头函数写法
+        [1, 2, 3].map(x => x * x);
+
+        //箭头函数注意点
+        /*
+         * （1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+         * （2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
+         * （3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。
+         * （4）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。
+         */
+
+        //箭头函数转换为ES5的写法
+        // ES6
+        function foo() {
+            setTimeout(() => {
+                console.log('id:', this.id);
+            }, 100);
+        }
+
+        // ES5
+        function foo() {
+            let _this = this;
+            setTimeout(function () {
+                console.log('id:', _this.id);
+            }, 100);
+        }
+
     };
 
     render() {
@@ -143,6 +231,9 @@ class App extends Component {
                 <br/>
                 <br/>
                 <Button onClick={this.onClickListener03}>es6 字符串的扩展</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener04}>es6 函数的扩展</Button>
             </div>
         );
     }
