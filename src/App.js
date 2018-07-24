@@ -136,6 +136,40 @@ class App extends Component {
         console.log({...a, ...b});            //{a: 1, b: 2, c: 3, d: 4}
         console.log(Object.assign({}, a, b));  //{a: 1, b: 2, c: 3, d: 4}
 
+        //Object.is()  比较两个值是否严格相等
+        console.log(Object.is('foo', 'foo'));  //true
+        console.log(Object.is({}, {}));       //false
+
+        console.log(Object.is(+0, -0));  //false
+        console.log(Object.is(NaN, NaN)); //true
+
+        console.log(+0 === -0);  //true
+        console.log(NaN === NaN); //false
+
+        //Object.assign(target,source...source) //合并对象
+        const target = {a: 1, b: 1};
+        const source1 = {b: 2, c: 2};
+        const source2 = {c: 3};
+        //后面的同名属性会覆盖前面的
+        Object.assign(target, source1, source2);
+        console.log(target);  //{a: 1, b: 2, c: 3}
+
+        // Object.assign(undefined); // 报错  TypeError: Cannot convert undefined or null to object
+        // Object.assign(null); // 报错 TypeError: Cannot convert undefined or null to object
+
+        //对象属性的遍历
+        let obj = {a: '1', b: '2', c: '3'};
+        // (1) for...in
+        // (2) Object.keys(obj)
+        // (3) Object.getOwnPropertyNames(obj)
+
+        console.log(Object.keys(obj)); //["a", "b", "c"]
+        console.log(Object.values(obj)); //["1", "2", "3"]
+        console.log(Object.entries(obj)); //["a", "1"] ["b", "2"] ["c", "3"]
+        console.log(Object.getOwnPropertyNames(obj)); // ["a", "b", "c"]
+
+
+
     };
 
     onClickListener03 = () => {
