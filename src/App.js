@@ -169,7 +169,6 @@ class App extends Component {
         console.log(Object.getOwnPropertyNames(obj)); // ["a", "b", "c"]
 
 
-
     };
 
     onClickListener03 = () => {
@@ -288,6 +287,169 @@ class App extends Component {
 
     };
 
+    onClickListener05 = () => {
+        //Set 类似于数组，但是成员的值是不重复的
+        const set = new Set();
+        [2, 3, 5, 4, 5, 2, 2].forEach((x) => {
+            set.add(x);
+        });
+        console.log([...set]);   //[2, 3, 5, 4]
+
+        //Set可接受一个数组作为参数
+        console.log(new Set([111, 333, 444, 444, 555]));   //{111, 333, 444, 555}
+
+        //size has()  delete() clear()
+        const set2 = new Set([1, 2, 3, 4, 4, 5, 6]);
+        set2.add(7);
+        console.log(set2.size);  //7
+        console.log(set2.has(7));  //true
+        console.log(set2.delete(7)); //tre
+        console.log(set2.has(7));  //false
+
+        //Set的遍历  Set没有键名，只有键值
+        let set3 = new Set(['red', 'green', 'blue']);
+
+        for (let item of set3.keys()) {
+            console.log(item);
+        }
+        // red
+        // green
+        // blue
+
+        for (let item of set3.values()) {
+            console.log(item);
+        }
+        // red
+        // green
+        // blue
+
+        for (let item of set3.entries()) {
+            console.log(item);
+        }
+        // ["red", "red"]
+        // ["green", "green"]
+        // ["blue", "blue"]
+
+
+        //forEach 遍历
+        const set4 = new Set([1, 2, 3, 4, 5, 5, 5, 6, 7]);
+        set4.forEach((x, index) => {
+            console.log(x + "--" + index);
+        });
+
+        //map 遍历
+        [...set4].map((item, index) => {
+            console.log(item + "--" + index);
+        });
+
+        //filter遍历
+        [...set4].filter((item) => {
+            console.log(item % 2 === 0);
+        });
+
+        //使用Set实现交集、并集、差集
+        let a = new Set([1, 2, 3]);
+        let b = new Set([4, 3, 2]);
+
+        //并集
+        let union = new Set([...a, ...b]);
+        console.log(union);   // {1, 2, 3, 4}
+
+        //交集
+        let intersect = new Set([...a].filter((item) => b.has(item)));
+        console.log(intersect);  //{2, 3}
+
+        //差集
+        let difference = new Set([...a].filter((item) => !b.has(item)));
+        console.log(difference);  //{1}
+
+
+        //数组去重复元素的方法
+        //(1). [...new Set(array)]
+        console.log([...new Set([1, 2, 2, 3, 4, 5, 6, 6, 6])]);  // [1, 2, 3, 4, 5, 6]
+
+        //(2). Array.from(new Set(array))
+        console.log(Array.from(new Set([1, 1, 2, 3, 3, 4, 5, 4])));   // [1, 2, 3, 4, 5]
+
+    };
+
+    onClickListener06 = () => {
+        //可接受数组作为参数
+        const map = new Map([
+            ['name', '张三'],
+            ['title', 'Author']
+        ]);
+
+        console.log(map.size); //2
+        console.log(map.has('name'));  //true
+        console.log(map.get('title'));  //Author
+        map.delete('name');
+        console.log(map.has('name'));  //false
+
+        //对同一个键多次赋值，后面的值将覆盖前面的值
+        const map2 = new Map();
+        map2.set('a', 1).set('a', 2);
+        console.log(map2.get('a'));  //2
+
+        //遍历方法
+        const map3 = new Map([
+            ['F', 'no'],
+            ['T', 'yes'],
+        ]);
+
+        for (let key of map3.keys()) {
+            console.log(key);
+        }
+        // "F"
+        // "T"
+
+        for (let value of map3.values()) {
+            console.log(value);
+        }
+        // "no"
+        // "yes"
+
+        for (let item of map3.entries()) {
+            console.log(item[0], item[1]);
+        }
+        // "F" "no"
+        // "T" "yes"
+
+        // 或者
+        for (let [key, value] of map3.entries()) {
+            console.log(key, value);
+        }
+        // "F" "no"
+        // "T" "yes"
+
+        // 等同于使用map.entries()
+        for (let [key, value] of map) {
+            console.log(key, value);
+        }
+        // "F" "no"
+        // "T" "yes"
+
+        //Map 结构转为数组结构，比较快速的方法是使用扩展运算符（...）
+        const map4 = new Map([
+            [1, 'one'],
+            [2, 'two'],
+            [3, 'three'],
+        ]);
+        console.log([...map4.keys()]);    // [1, 2, 3]
+        console.log([...map4.values()]);  // ["one", "two", "three"]
+        console.log([...map4.entries()]);  // [[1,'one'], [2, 'two'], [3, 'three']]
+        console.log([...map4]);  // [[1,'one'], [2, 'two'], [3, 'three']]
+
+        //map() filter() forEach()
+        const map0 = new Map()
+            .set(1, 'a')
+            .set(2, 'b')
+            .set(3, 'c');
+        console.log(new Map([...map0].filter(([k, v]) => k < 3)));   //{1 => "a", 2 => "b"}
+        console.log(new Map([...map0].map(([k, v]) => [k * 2, '_' + v]))); //{2 => "_a", 4 => "_b", 6 => "_c"}
+
+    };
+
     render() {
         return (
             < div
@@ -316,6 +478,12 @@ class App extends Component {
                 <br/>
                 <br/>
                 <Button onClick={this.onClickListener04}>es6 函数的扩展</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener05}>es6 Set数据结构</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener06}>es6 Map数据结构</Button>
             </div>
         );
     }
