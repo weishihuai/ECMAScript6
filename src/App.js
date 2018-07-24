@@ -60,6 +60,54 @@ class App extends Component {
 
         console.log([...'hello world']); // ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
 
+        // Array.of方法用于将一组值，转换为数组。
+        console.log(Array.of(1, 2, 3));       //[1, 2, 3]
+        console.log(Array.of());        //[]
+        console.log(Array.of(undefined));   //[undefined]
+        console.log(Array.of(null));    //[null]
+        console.log(Array.of([]));  //[Array(0)]
+
+        //find()  findIndex()
+        //返回第一个小于0的数
+        let re = [1, 4, -5, 10, -10].find((n) => n < 0);
+        console.log(re);   //-5
+
+        //返回第一个大于9的数值的下标
+        let re2 = [1, 5, 10, 15].findIndex((value, index, arr) => {
+            return value > 9;
+        });
+        console.log(re2);   //2
+
+        //fill() 使用给定值，填充一个数组
+        console.log(['a', 'b', 'c'].fill(7));   // [7, 7, 7]
+
+        //同一内存地址
+        let arr = new Array(3).fill({name: "Mike"});
+        arr[0].name = "Ben";
+        console.log(arr);   //[{name: "Ben"}, {name: "Ben"}, {name: "Ben"}]
+
+        //遍历数组  entries()，keys()，values()
+        for (let index of ['1', '2'].keys()) {
+            console.log(index);   // 0 1
+        }
+
+        for (let value of ['1', '2', '3'].values()) {
+            console.log(value);  //1 2 3
+        }
+
+        for (let [index, value] of ['a', 'b', 'c'].entries()) {
+            console.log(index + '--' + value);  //0--a  1--b 3--c
+        }
+
+        //includes()  表示某个数组是否包含给定的值
+        console.log([1, 2, 3].includes(4));  //false
+        console.log([1, 2, 3].includes(2)); //true
+        console.log([NaN].includes(NaN));  //true
+
+        //indexOf()对NaN的误判
+        console.log([NaN].indexOf(NaN));  //-1
+
+        //数组的空位跳过问题
     };
 
     onClickListener02 = () => {
