@@ -450,6 +450,159 @@ class App extends Component {
 
     };
 
+    onClickListener07 = () => {
+        // console.log(a);  //undefined
+        // var a = "weixiaohuai";
+        //
+        // console.log(b);  //ReferenceError引用错误
+        // let b = "weixiaohuai";
+        // console.log(b); //weixiaohuai
+        //
+        //
+        // // let a = 'weixiaohuai';
+        // // let a = 'hello world';
+        //
+        // let temp = 'hello';
+        // if (true) {
+        //     let temp = 'world';
+        //     console.log(temp); //world
+        // }
+        // console.log(temp);  //hello
+        //
+        // // const temp1;  //报错：必须初始化 const variable without initializer is not allowed
+        // // const temp2 = 'hello world';
+        // // console.log(temp2); //hello world
+        // // temp2 = 'weixiaohuai'; //报错 const不能再改变值
+        //
+        // const a1 = 'hello weixiaohuai';
+        // // const a1 = 'hello';  //报错，不能重复声明 Block scoped variables cannot be redeclared
+        //
+        // if (true) {
+        //     const a1 = 'hello'; //不同块级作用域，可以重复声明
+        //     console.log(a1); //hello
+        // }
+        // console.log(a1); //hello weixiaohuai
+        //
+        // const obj = {};
+        // obj.age = 18;
+        // obj.name = 'weixiaohuai';
+        // for (let item in obj) {  //循环遍历obj的属性
+        //     console.log(obj[item]);  //18  weixiaohuai
+        // }
+
+        // obj = {}; // 将obj指向另一个对象，就会报错 ReadOnly (等同于改变了它的指针指向，实际上指针不可变)
+
+
+        // let [first, [[second], third]] = [1, [[2], 3]];
+        // console.log(first);  // 1
+        // console.log(second);  // 2
+        // console.log(third);  // 3
+        //
+        // let [ , , c] = ["a", "b", "c"];
+        // console.log(c);   // c
+        //
+        // let [d, , f] = [1, 2, 3];
+        // console.log(d); // 1
+        // console.log(f); // 3
+        //
+        // let [head, ...tail] = [1, 2, 3, 4];
+        // console.log(head); // 1
+        // console.log(tail); //...为扩展运算符  [2, 3, 4]
+        //
+        // //  如果解构不成功，变量的值就等于undefined。
+        // let [test1] = [];
+        // let [g,i] = [1];
+        // console.log(test1);  //undefined
+        // console.log(g); //1
+        // console.log(i); //undefined
+
+        // //完全解构
+        // let [x, [y, y2], z] = ['a', ['b', 'c'], 'd'];
+        // console.log(x);  //'a'
+        // console.log(y);  //'b'
+        // console.log(y2); //'c'
+        // console.log(z);  //'d'
+        // //不完全解构
+        // let [x1, [y1], z1] = ['a', ['b', 'c'], 'd'];
+        // console.log(x1);  //'a'
+        // console.log(y1);  //'b'
+        // console.log(z1);  //'d'
+
+
+        // let [flag = true] = [];
+        // console.log(flag);   //true
+        //
+        // let [age, name = 'weixiaohuai'] = [18, undefined];
+        // console.log(age); //18
+        // console.log(name); //weixiaohuai
+        //
+        // let [a = 'weixiaohuai'] = [null];
+        // console.log(a); //null  因为null === undefined 为false,也就是不满足严格相等
+
+        //基本用法
+        // let {name, age} = {age: 18, name: "weixiaohuai"};
+        // console.log(age);  //18
+        // console.log(name); //weixiaohuai
+        //
+        // let {sex} = {age: 18, name: "weixiaohuai"};
+        // console.log(sex);   //没有匹配到有相同key的值，返回undefined
+
+        // //默认值
+        // let {name1 = 'weixiaohuai'} = {name1: undefined};
+        // console.log(name1); //weixiaohuai
+        //
+        // let {name2 = 'weixiaohuai'} = {name2: null};
+        // console.log(name2); //null 因为null === undefined 为false,也就是不满足严格相等
+        //
+        // let [a,b,c] = "abc";
+        // //当变量的个数与字符串的长度相等时,一一匹配
+        // console.log(a);  //a
+        // console.log(b);  //b
+        // console.log(c);  //c
+        //
+        // //当变量的个数与字符串的长度不相等时,按声明的变量的顺序顺序匹配
+        // let [d, e, f, g] = 'defghi';
+        // console.log(d); //d
+        // console.log(e); //e
+        // console.log(f); //f
+        // console.log(g); //g
+        //
+        // let str = 'weishihuai';
+        // let {length: len} = str;
+        // console.log(len); //10 返回str的长度
+
+        // //场景一：提取json对象的数据
+        // let obj = {
+        //     age: 18,
+        //     name: "weixiaohuai",
+        //     hobby: ['music', 'run', 'basketball']
+        // };
+        // let {age, name, hobby} = obj;
+        // console.log(age);   //18
+        // console.log(name);  //weixiaohuai
+        // console.log(hobby); //['music', 'run','basketball']
+
+        //场景二：交换变量的值
+        // let a = 'hello';
+        // let b = 'world';
+        // [a, b] = [b ,a];
+        // console.log(a); //world
+        // console.log(b); //hello
+
+        //场景三：遍历Map
+        // let userInfoMap = new Map();
+        // userInfoMap.set("name", 'weixiaohuai');
+        // userInfoMap.set("age", 18);
+        // userInfoMap.set("sex", "male");
+        // for (let [key, value] of userInfoMap) {
+        //     // name==weixiaohuai
+        //     // age==18
+        //     // sex==male
+        //     console.log(key + "==" + value);
+        // }
+
+    };
+
     render() {
         return (
             < div
@@ -484,6 +637,9 @@ class App extends Component {
                 <br/>
                 <br/>
                 <Button onClick={this.onClickListener06}>es6 Map数据结构</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener07}>测试</Button>
             </div>
         );
     }
