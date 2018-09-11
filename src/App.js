@@ -603,6 +603,361 @@ class App extends Component {
 
     };
 
+    add = (a, b) => {
+        return a + b;
+    };
+
+    onClickListener08 = () => {
+        // let str = 'wsh';
+        // //依次输出 w s h
+        // for (let item of str) {
+        //     console.log(item);   // w s h
+        // }
+        //
+        // let name = 'wei shi huai';
+        // console.log(name.includes('wei'));   //字符串中含有'wei',所以为true
+        // console.log(name.startsWith('wei')); //字符串以'wei'开头，所以为true
+        // console.log(name.endsWith('！'));    //字符串以'huai'结尾，所以为false
+        //
+        // console.log(name.includes('shi', 4));  //从第四个位置开始字符串包含'shi',所以为true
+        // console.log(name.startsWith('wei',1)); //从第一个位置开始字符串以e开头,所以为false
+        // console.log(name.endsWith('shi',7));   //针对name前七个字符是以'shi'结尾,所以为true
+
+        // let name = 'weishihuai', age = 18;
+        // console.log(`hello, your name is ${name}, age is ${age}`);  //hello, your name is weishihuai, age is 18
+
+        // console.log(`a + b = ${this.add(1, 2)}`); //a + b = 3
+
+    };
+
+    onClickListener09 = () => {
+        // console.log(Number.isNaN(NaN));    // true
+        // console.log(Number.isNaN(15));     // false
+        // console.log(Number.isNaN('15'));   // false
+        // console.log(Number.isNaN(true));   // false
+        // console.log(Number.isNaN(9 / NaN));  // true
+        // console.log(Number.isNaN('true' / 0));   // true
+        // console.log(Number.isNaN('true' / 'true')); // true
+
+        // console.log(Number.isInteger(1));    //因为1是整数,所以为true
+        // console.log(Number.isInteger(1.0));  //因为在js中整数和小数采用统一的存储方式，所以需要注意一点,所以为true
+        // console.log(Number.isInteger(1.1));  //1.1是浮点数，所以为false
+        //
+        // //注意： isInteger中传入的参数如果不是整数，统一返回false
+        // console.log(Number.isInteger());  //false
+        // console.log(Number.isInteger('weishihuai')); //false
+        // console.log(Number.isInteger(null));  //false
+        // console.log(Number.isInteger(NaN));  //false
+        // console.log(Number.isInteger(false));  //false
+
+
+        //Math.trunc()方法只返回整数部分，不会进行四舍五入处理,会保留符号位
+        // console.log(Math.trunc(1.0));  //1
+        // console.log(Math.trunc(1.9));  //1
+        // console.log(Math.trunc(-1));   //-1
+        //
+        // //Math.trunc()对于一些可以截取出整数的类型会先转换为Number再进行截取
+        // console.log(Math.trunc(true)) ; //1
+        // console.log(Math.trunc(false)); //0
+        // console.log(Math.trunc('123.456')); //123
+        // console.log(Math.trunc(null)); //0
+        //
+        // //Math.trunc()对于空值等不能截取整数部分的直接返回NaN
+        // console.log(Math.trunc('weishihuai')); //NaN
+        // console.log(Math.trunc()); //NaN
+        // console.log(Math.trunc(undefined)); //NaN
+        // console.log(Math.trunc(NaN)); //NaN
+
+    };
+
+    functionDefaultParam = (a, b = 2) => {
+        return a + b;
+    };
+
+    //rest参数，相当于传入一个数组
+    restParam = (...values) => {
+        for (let item of values) {
+            console.log(item);
+        }
+    };
+
+    onClickListener10 = () => {
+        // console.log(this.functionDefaultParam(1));  //因为b指定了默认值2,所以没传参数b会取默认值2,相加后结果为3
+        // console.log(this.functionDefaultParam(1,3)); //4
+
+        //rest参数
+        this.restParam('a', 'b', 'c', 'd');  //依次输出'a' 'b' 'c' 'd'
+
+        //箭头函数的简便写法
+        ['a', 'b', 'c'].map((item, index) => {
+            console.log(item, index);  //'a' 0 、 'b' 1 、'c' 2
+        });
+
+        ['a', 'b', 'c'].map(function (item, index) {
+            console.log(item, index);  //'a' 0 、 'b' 1 、'c' 2
+        });
+
+    };
+
+    add = (a, b) => {
+        return a + b;
+    };
+
+    onClickListener11 = () => {
+        // console.log(...['wei','shi','huai']); //wei shi huai
+        // console.log(this.add(...[1,2])); //相当于1+2=3
+
+        // let arr1 = ['wei', 'shi', 'huai'];
+        // let arr2 = arr1.concat();
+        // for (let item of arr2) {
+        //     console.log(item);  //wei shi huai
+        // }
+        //
+        // //改变新数组并不会改变原数组的值
+        // arr2[0] = 'weiweiwei';
+        // for (let item of arr1) {
+        //     console.log(item);  //wei shi huai
+        // }
+        // for (let item of arr2) {
+        //     console.log(item);  //weiweiwei shi huai
+        // }
+        //
+        // //扩展运算符复制数组
+        // let arr3 = [...arr1];
+        // for (let item of arr3) {
+        //     console.log(item);  //wei shi huai
+        // }
+
+        //数组合并
+        //需要注意的是：浅拷贝。如果修改了原数组的成员，会同步反映到新数组。
+        // const arr1 = ['a', 'b'];
+        // const arr2 = ['c'];
+        // const arr3 = ['d', 'e'];
+        //
+        // // ES5
+        // console.log(arr1.concat(arr2, arr3));  // [ 'a', 'b', 'c', 'd', 'e' ]
+        // // ES6
+        // console.log([...arr1, ...arr2, ...arr3]);  // [ 'a', 'b', 'c', 'd', 'e' ]
+
+        // let str = 'weishihuai';
+        // console.log([...str]); //["w", "e", "i", "s", "h", "i", "h", "u", "a", "i"]
+
+        // console.log(Array.from('weishihuai'));  //字符串组成数组： ["w", "e", "i", "s", "h", "i", "h", "u", "a", "i"]
+        // console.log(Array.of(1,2,3,4,5));  //值组成数组：[1, 2, 3, 4, 5]
+
+        //数组实例的 entries()，keys() 和 values()
+        // let arr = ['wei', 'shi', 'huai'];
+        // //第一种方法
+        // for (let item of arr) {
+        //     console.log(item);  //'wei' 'shi' 'huai'
+        // }
+        //
+        // //第二种方法
+        // for (let index of arr.keys()) {
+        //     //输出键值
+        //     console.log(index); // 0 1 2
+        // }
+        //
+        // for (let item of arr.values()) {
+        //     //输出值
+        //     console.log(item); //'wei' 'shi' 'huai'
+        // }
+        //
+        // for (let [index, item] of arr.entries()) {
+        //     //输出键值对
+        //     console.log(index, item);  // 0 'wei'、1 'shi'、2 'huai'
+        // }
+
+        //includes()
+        let arr = ['wei', 'shi', 'huai', NaN];
+        console.log(arr.includes('wei')); //true
+        console.log(arr.includes('wei', 1));  //从下标为1的位置开始查找，false
+        console.log(arr.includes(NaN)); //true
+        console.log(arr.includes('huai', -2)); //倒数第二个开始查找，true
+
+    };
+
+    onClickListener12 = () => {
+        //Object.is()
+        // console.log(Object.is('weishihuai', 'weishihuai'));   //'weishihuai'==='weishihuai'为true,所以结果为true
+        // console.log(Object.is({}, {}));  //{} === {}为false，所以结果为false
+        //
+        // //注意NaN以及+0 -0问题
+        // console.log(Object.is(NaN, NaN)); //true
+        // console.log(NaN === NaN); //false
+        //
+        // console.log(Object.is(+0, -0)); //false
+        // console.log(+0 === -0); //true
+
+        //Object.assign()
+        // let obj1 = {name: 'weishihuai'};
+        // let obj2 = {age: 18};
+        // let obj3 = {sex: 'male'};
+        // //合并obj1 obj2 obj3
+        // console.log(Object.assign(obj1, obj2, obj3));   //{name: "weishihuai", age: 18, sex: "male"}
+        //
+        // //同名属性后面覆盖前面
+        // let obj4 = {age: 20};
+        // console.log(Object.assign(obj1, obj2, obj3, obj4)); //{name: "weishihuai", age: 20, sex: "male"}
+        //
+        // //为obj5对象添加一个属性age
+        // let obj5 = {name: 'weishihuai'};
+        // console.log(Object.assign(obj5, {age: 18})); //{name: "weishihuai", age: 18}
+        //
+        // //克隆对象
+        // let obj6 = {name: 'weishihuai', age: 18};
+        // let obj7 = Object.assign({}, obj6);
+        // console.log(obj7); //{name: 'weishihuai', age: 18}
+
+        // //对象属性的遍历
+        // let obj = {name: 'weishihuai', age: 18, sex: 'male'};
+        // //第一种方法
+        // for (let prop in obj) {
+        //     console.log(prop); //name age sex
+        // }
+        // //第二种方法
+        // let propArr = Object.keys(obj);
+        // for (let prop of propArr) {
+        //     console.log(prop); //name age sex
+        // }
+        // //第三种方法
+        // let propArr2 = Object.getOwnPropertyNames(obj);
+        // for (let prop of propArr2) {
+        //     console.log(prop); //name age sex
+        // }
+
+        // let obj = {name: 'weishihuai', age: 18};
+        // for (let key of Object.keys(obj)) {
+        //     console.log(key); //name age
+        // }
+        //
+        // for (let value of Object.values(obj)) {
+        //     console.log(value); //weishihuai 18
+        // }
+        //
+        // for (let [key, value] of Object.entries(obj)) {
+        //     console.log([key, value]); // ["name", "weishihuai"]  ["age", 18]
+        // }
+
+        //扩展运算符
+        let obj1 = {name: 'weishihuai', age: 18};
+        let obj2 = {...obj1};
+        console.log(obj2); //{name: "weishihuai", age: 18}
+
+        //等同于：
+        console.log(Object.assign({}, obj1));  //{name: "weishihuai", age: 18}
+
+        //合并对象
+        let obj3 = {name: 'weishihuai', age: 18};
+        let obj4 = {sex: 'male'};
+        console.log({...obj3, ...obj4});  //{name: "weishihuai", age: 18, sex: "male"}
+        //等同于
+        console.log(Object.assign(obj3, obj4)); //{name: "weishihuai", age: 18, sex: "male"}
+    };
+
+    onClickListener13 = () => {
+        // //Set基本用法
+        // let set1 = new Set();
+        // let arr1 = ['a', 'b', 'c', 'd', 'e', 'd', 'a', 'c'];
+        // arr1.forEach(item => {
+        //     set1.add(item);
+        // });
+        // //不会添加重复的值
+        // for (let item of set1) {
+        //     console.log(item);  //'a' 'b' 'c' 'd' 'e'
+        // }
+        //
+        // //利用Set可以去除数组重复元素
+        // let set2 = new Set(['a', 'b', 'c', 'd', 'e', 'd', 'a', 'c']);
+        // console.log([...set2]);  //["a", "b", "c", "d", "e"]
+        //
+        // let set3 = new Set();
+        // //添加元素
+        // set3.add('a');
+        // set3.add('b');
+        // set3.add('a');
+        // set3.add('c');
+        // console.log(set3.size); //set长度 3
+        // console.log(set3.has('a')); //has用于判断set中是否包含某个元素 true
+        // console.log(set3.delete('c')); //delete删除某个元素 true
+        // console.log(set3.size); //2
+
+        //遍历方法
+        // //for .. of
+        // let set = new Set(['a', 'b', 'c']);
+        // //输出键
+        // for (let item of set.keys()) {
+        //     console.log(item);  //a b c
+        // }
+        // //输出值
+        // for (let item of set.values()) {
+        //     console.log(item);  //a b c
+        // }
+        // //输出键值对
+        // for (let item of set.entries()) {
+        //     console.log(item); //a a b b c c
+        // }
+        //
+        // //forEach
+        // set.forEach(item => {
+        //     console.log(item); //a b c
+        // })
+
+        let a = new Set(['a', 'b', 'c']);
+        let b = new Set(['a', 'd', 'e']);
+
+        //a b的并集
+        let union = new Set([...a, ...b]);
+        console.log(union);  //Set(5) {"a", "b", "c", "d", "e"}
+
+        // a b的交集
+        let intersect = new Set([...a].filter(x => b.has(x)));
+        console.log(intersect);  //Set(1) {"a"}
+
+        // a b的差集
+        let difference = new Set([...a].filter(x => !b.has(x)));
+        console.log(difference);  //Set(2) {"b", "c"}
+
+    };
+
+    onClickListener14 = () => {
+        // let map1 = new Map();
+        // map1.set("name", "weishihuai");
+        // map1.set("age", 18);
+        // map1.set("sex", "male");
+        // map1.set("age", 20);
+        //
+        // console.log(map1.size);    //map的长度 3
+        // console.log(map1.has("name")); //判断map是否包含指定key的值 true
+        // console.log(map1.get("name")); //根据key值取出对应的值 weishihuai
+        // console.log(map1.delete("sex")); //删除指定key元素 true
+        // console.log(map1.size); //2
+
+        //遍历方法
+        const map = new Map([
+            ['name', 'weishihuai'],
+            ['age', 18],
+        ]);
+
+        for (let key of map.keys()) {
+            console.log(key);  //name age
+        }
+
+        for (let value of map.values()) {
+            console.log(value);  //weishihuai 18
+        }
+
+        for (let item of map.entries()) {
+            console.log(item[0], item[1]); //name weishihuai age 18
+        }
+
+        //使用扩展运算符进行遍历
+        console.log([...map.keys()]);  // ["name", "age"]
+        console.log([...map.values()]); // ["weishihuai", 18]
+        console.log([...map.entries()]); // ["name", "weishihuai"] ["age", 18]
+        console.log([...map]); // ["name", "weishihuai"] ["age", 18]
+    };
+
     render() {
         return (
             < div
@@ -639,7 +994,28 @@ class App extends Component {
                 <Button onClick={this.onClickListener06}>es6 Map数据结构</Button>
                 <br/>
                 <br/>
-                <Button onClick={this.onClickListener07}>测试</Button>
+                <Button onClick={this.onClickListener07}>es6 解构赋值（扩展）</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener08}>es6 字符串的扩展（扩展）</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener09}>es6 数值的扩展（扩展）</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener10}>es6 函数的扩展（扩展）</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener11}>es6 数组的扩展（扩展）</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener12}>es6 对象的扩展（扩展）</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener13}>es6 Set数据结构（扩展）</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener14}>es6 Map数据结构（扩展）</Button>
             </div>
         );
     }
