@@ -958,6 +958,66 @@ class App extends Component {
         console.log([...map]); // ["name", "weishihuai"] ["age", 18]
     };
 
+    //filter、map、find方法区别
+    onClickListener15 = () => {
+        let arr1 = [
+            {name: 'zhangsan', age: 18, sex: 'male'},
+            {name: 'lisi', age: 30, sex: 'male'},
+            {name: 'xiaohong', age: 20, sex: 'female'}
+        ];
+
+        //filter()方法：主要用于过滤筛选数组，数组filter后，返回的结果为新的数组,不会改变原数组的值
+        //filter示例1:返回年龄大于20岁的数据
+        let arr2 = arr1.filter(item => item.age > 20);
+        console.log(arr2);   // [{name: "lisi", age: 30, sex: "male"}]
+        console.log(arr1);   // [{name: 'zhangsan', age: 18, sex: 'male'},{name: 'lisi', age: 30, sex: 'male'},{name: 'xiaohong', age: 20, sex: 'female'}]
+
+        //filter示例2：返回不是男生的数据
+        let arr3 = arr1.filter((item) => {
+            return item.sex !== 'male';
+        });
+        console.log(arr3);  // [{name: "xiaohong", age: 20, sex: "female"}]
+
+        //map()方法主要用于遍历数组,操作数据不会改变原数组
+        let arr4 = [
+            {name: 'zhangsan', age: 18, sex: 'male'},
+            {name: 'lisi', age: 30, sex: 'male'},
+            {name: 'xiaohong', age: 20, sex: 'female'}
+        ];
+
+        //map示例1：循环遍历数组，返回每个人的年龄+1之后的数据
+        let arr5 = arr4.map(item => item.age + 1);
+        console.log(arr5);  //[19, 31, 21]
+        console.log(arr4);  //[{name: 'zhangsan', age: 18, sex: 'male'},{name: 'lisi', age: 30, sex: 'male'},{name: 'xiaohong', age: 20, sex: 'female'}]
+
+        //map示例2：循环遍历数组,根据某个条件筛选过滤数组
+        let arr6 = arr4.map((item) => {
+            if (item.age > 20) {
+                return item;
+            }
+        });
+        console.log(arr6);  //[undefined,{name: 'lisi', age: 30, sex: 'male'},undefined]
+
+        //find()方法：用于查找符合条件的数据，只要匹配到第一条就直接返回,不会再继续查找下去
+        let arr7 = [
+            {name: 'zhangsan', age: 18, sex: 'male'},
+            {name: 'zhangsan', age: 20, sex: 'female'},
+            {name: 'lisi', age: 30, sex: 'male'}
+        ];
+
+        //find示例1：查找name='zhangsan'的数据
+        let arr8 = arr7.find(item => item.name === 'zhangsan');
+        console.log(arr8);  //只返回了第一条数据 {name: "zhangsan", age: 18, sex: "male"}
+
+        let arr9 = arr7.find(item => item.name === 'wangwu');
+        console.log(arr9);  //没有找到符合条件的数据，返回undefined
+
+        //注意： 与filter()方法区别 filter会一直查找下去，返回符合name='zhangsan'的全部数据
+        let arr10 = arr7.filter(item => item.name === 'zhangsan');
+        console.log(arr10); //返回两条数据 [{name: "zhangsan", age: 18, sex: "male"}1: {name: "zhangsan", age: 20, sex: "female"}]
+
+    };
+
     render() {
         return (
             < div
@@ -1016,6 +1076,9 @@ class App extends Component {
                 <br/>
                 <br/>
                 <Button onClick={this.onClickListener14}>es6 Map数据结构（扩展）</Button>
+                <br/>
+                <br/>
+                <Button onClick={this.onClickListener15}>es6 filter、map、find方法区别</Button>
             </div>
         );
     }
